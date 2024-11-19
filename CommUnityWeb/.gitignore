@@ -1,9 +1,20 @@
+# Build files and output
 /CommUnityWeb/bin/
-.vs/
-# Ignore sensitive credential files
-Credentials/
+/CommUnityWeb/obj/
+/.vs/
+
+# Sensitive files
 *.json
+Credentials/
+appsettings.*.json
 
+# IDE and tooling
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
 
-
- 
+# Miscellaneous
+.DS_Store
+Thumbs.db
