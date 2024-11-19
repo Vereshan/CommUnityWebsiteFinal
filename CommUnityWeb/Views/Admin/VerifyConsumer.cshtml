@@ -1,0 +1,466 @@
+﻿@model CommUnityWeb.Models.UserRequest
+
+@{
+    ViewData["Title"] = "VerifyConsumer";
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <!-- CSS Styles -->
+    <style>
+        /* Keyframes for animations */
+        @@keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Class using the keyframes */
+        .fade-in {
+            animation: fadeIn 2s ease-in;
+        }
+
+        /* Example styles for the page */
+        .header {
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px;
+        }
+
+        .service-provider {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 5px;
+        }
+
+        /* Spinner styles */
+        .spinner {
+            display: none; /* Hide by default */
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            top: 45%; /* Adjust as needed */
+            transform: translate(-50%, -50%);
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #007bff; /* Spinner color */
+            border-radius: 50%;
+            width: 95px;
+            height: 95px;
+            animation: spin 1s linear infinite;
+        }
+
+        /* gif */
+        .gif {
+            display: none; /* Hide by default */
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            top: 45%; /* Adjust as needed */
+            border-radius: 50%;
+            width: 95px;
+            height: 95px;
+        }
+
+        /* Loading message styles */
+        .loading-message {
+            display: none; /* Hide by default */
+            position: fixed;
+            z-index: 1001; /* Above the spinner */
+            left: 44%;
+            top: 68%; /* Adjust this to position below spinner */
+            transform: translateY(-50%); /* Adjust from the center vertically */
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        /* Loading message styles */
+        .loading-message2 {
+            text-align: center;
+            display: none; /* Hide by default */
+            position: fixed;
+            z-index: 1001; /* Above the spinner */
+            left: 38%;
+            top: 68%; /* Adjust this to position below spinner */
+            transform: translateY(-50%); /* Adjust from the center vertically */
+            font-size: 18px;
+            color: #333;
+            font-weight: bold;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Loading message styles */
+        .loading-Decline {
+            text-align: center;
+            display: none; /* Hide by default */
+            position: fixed;
+            z-index: 1001; /* Above the spinner */
+            left: 47.5%;
+            top: 68%; /* Adjust this to position below spinner */
+            transform: translateY(-50%); /* Adjust from the center vertically */
+            font-size: 18px;
+            color: #fff;
+            font-weight: bold;
+            background-color: red;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Loading message styles */
+        .loading-APPROVE {
+            text-align: center;
+            display: none; /* Hide by default */
+            position: fixed;
+            z-index: 1001; /* Above the spinner */
+            left: 47%;
+            top: 68%; /* Adjust this to position below spinner */
+            transform: translateY(-50%); /* Adjust from the center vertically */
+            font-size: 18px;
+            color: #fff;
+            font-weight: bold;
+            background-color: green;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+
+        /* Keyframes for spinner */
+        @@keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        /* Blur effect */
+        .blur {
+            filter: blur(2px); /* Adjust the blur radius as needed */
+            transition: filter 0.1s ease; /* Smooth transition */
+        }
+
+        /* Styles for the message display */
+        .message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+            text-align: center;
+        }
+
+        .match {
+            background-color: green; /* Green for match */
+        }
+
+        .no-match {
+            background-color: red; /* Red for no match */
+        }
+
+        .btn {
+            transition: transform 0.3s ease; /* Smooth transition for floating effect */
+        }
+
+            .btn:hover {
+                transform: translateY(-5px); /* Float effect */
+            }
+
+
+    </style>
+</head>
+
+<body>
+    <div id="credential-message" class="message" style="display: none;"></div>
+    <div class="container mt-5">
+        <div class="row" style="overflow-y: auto; max-height: 75vh;">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h2 class="card-title text-center mb-4" style="font-family: Tahoma, sans-serif;">PENDING User Details:</h2>
+                        <div>
+                            <h4>ID Number: @Model.IdNumber</h4>
+                            <hr />
+                            <dl class="row" style="font-family: Tahoma, sans-serif;">
+                                <dt class="col-sm-3">ID Number:</dt>
+                                <dd class="col-sm-9">@Html.DisplayFor(model => model.IdNumber)</dd>
+                                <dt class="col-sm-3">Name:</dt>
+                                <dd class="col-sm-9">@Html.DisplayFor(model => model.Name)</dd>
+                                <dt class="col-sm-3">Surname:</dt>
+                                <dd class="col-sm-9">@Html.DisplayFor(model => model.Surname)</dd>
+                                <dt class="col-sm-3">Date Of Birth:</dt>
+                                <dd class="col-sm-9">@Html.DisplayFor(model => model.FormattedDateOfBirth)</dd>
+                            </dl>
+                        </div>
+                        <div class="text-center" style="font-family: Tahoma, sans-serif;">
+                            <div style="display: inline-flex; gap: 10px;">
+                                <form method="post" action="@Url.Action("ApproveConsumer", "Admin", new { id = Model.IdNumber })" class="loading-form" onsubmit="showLoading(event, this)">
+                                    <button id="approveButton" type="submit" class="btn btn-primary" disabled>Approve</button>
+                                </form>
+                                <form method="post" action="@Url.Action("DeclineConsumer", "Admin", new { id = Model.IdNumber })" class="loading-form" onsubmit="showLoading(event, this)">
+                                    <button id="declineButton" type="submit" class="btn btn-danger" disabled>Decline</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card" style="background-color: #FF6D00;  border-radius: 15px; border: 3px solid black; color: #fff;">
+                    <div class="card-body">
+                        <div class="text-center mb-4">
+                            <img src="/Images/criminal-record.gif" alt="Investigation Icon" style="width: 80px; height: 80px; border-radius: 5px;">
+                        </div>
+                        <div>
+                            <p>This section displays the results of the ID verification.</p>
+
+                            <div id="verification-result" class="border p-3" style="background-color: white; color:black;">
+                                <p id="result-message">Verification results will appear here.</p>
+                            </div>
+                        </div>
+                        <p style="margin: 22px 0; color: #fff;">Verify if the user's South African ID Number is valid:</p>
+                        <div class="text-center mb-4">
+                            <button class="btn btn-success ml-2" id="verify-button" onclick="verifyID('@Model.IdNumber')">Verify ID</button>
+                        </div>
+                        <p style="margin: 2px 0; color: #fff;">Check if user belongs to any of the VerifyID sanctions lists:</p>
+                        <div class="text-center mb-4">
+                            <button class="btn btn-danger ml-2" id="verify-button" onclick="checkAMLPEP('@Model.IdNumber,@Model.Name')">Check Sanctions Lists</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="/Images/suspect.gif" class="gif" id="loadingSpinner2"></img>
+    <div class="spinner" id="loadingSpinner"></div>
+    <div class="loading-message" id="loadingMessage"></div>
+    <div class="loading-message2" id="loadingMessage2"></div>
+    <div class="loading-APPROVE" id="loadingMessageApprove"></div>
+    <div class="loading-Decline" id="loadingMessageDecline"></div>
+
+    <script>
+        function showLoading(event, form) {
+            event.preventDefault(); // Prevent default form submission
+
+            const loadingSpinner = document.getElementById("loadingSpinner");
+            const loadingMessageApprove = document.getElementById("loadingMessageApprove");
+            const loadingMessageDecline = document.getElementById("loadingMessageDecline");
+            const mainContent = document.querySelector('.row');
+
+            // Determine the action
+            const isApproveAction = form.action.includes("ApproveConsumer");
+
+            // Hide all messages initially
+            loadingMessageApprove.style.display = "none";
+            loadingMessageDecline.style.display = "none";
+
+            // Display spinner and the appropriate message
+            loadingSpinner.style.display = "block";
+            if (isApproveAction) {
+                loadingMessageApprove.style.display = "block";
+                loadingMessageApprove.innerText = "Approving user...";
+            } else {
+                loadingMessageDecline.style.display = "block";
+                loadingMessageDecline.innerText = "Declining user...";
+            }
+
+            // Blur the background content
+            mainContent.classList.add("blur");
+
+            // Simulate delay and submit the form
+            setTimeout(() => {
+                form.submit();
+            }, 2000); // Delay to show spinner (2 seconds)
+        }
+
+
+        function hideLoadingScreen() {
+            // Hide spinner and text message
+            document.getElementById("loadingSpinner").style.display = "none";
+            document.getElementById("loadingText").style.display = "none";
+
+            // Remove blur effect from main content
+            const mainContent = document.querySelector('.row');
+            mainContent.classList.remove("blur");
+        }
+
+        // Store model data in JavaScript variables for comparison
+        const originalName = "@Model.Name";
+        const originalSurname = "@Model.Surname";
+        const originalDOB = "@Model.FormattedDateOfBirth";
+
+        const resultMessage = document.getElementById('resultMessage');
+        const approveButton = document.getElementById('approveButton');
+        const declineButton = document.getElementById('declineButton');
+
+        // Function to handle button states
+        function updateButtons(approveActive, declineActive) {
+            approveButton.disabled = !approveActive;
+            declineButton.disabled = !declineActive;
+        }
+
+        // Initialize the boolean values
+        let isIDVerified = false;
+        let isSanctionsChecked = false;
+
+        // Function to check if both conditions are true and update the button state
+        function checkApprovalCriteria() {
+            if (isIDVerified && isSanctionsChecked) {
+                updateButtons(true, false);
+            } else {
+                updateButtons(false, true);
+            }
+        }
+
+
+        function showMessage(message, isMatch) {
+            const messageDiv = document.getElementById('credential-message');
+            messageDiv.innerText = message;
+            messageDiv.className = isMatch ? 'message match' : 'message no-match';
+            messageDiv.style.display = 'block'; // Show the message
+        }
+      
+      
+
+        function verifyID(idNumber) {
+            updateButtons(false, false);
+            // Show the spinner and the loading message
+            document.getElementById("loadingSpinner2").style.display = "block";
+            document.getElementById("loadingMessage").style.display = "block";
+            document.getElementById("loadingMessage").innerText = "Verifying South African ID...";  // Default message
+            const mainContent = document.querySelector('.row');
+            mainContent.classList.add("blur");
+
+            const apiUrl = 'https://www.verifyid.co.za/webservice/said_verification';
+            const apiKey = '$2y$10$CmeisRRJhRLemVJxVoSvLO6RMn/0.IdpUuyUd8';
+
+            const formData = new FormData();
+            formData.append('api_key', apiKey);
+            formData.append('id_number', idNumber);
+
+            setTimeout(() => {
+                fetch(apiUrl, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        const resultMessage = document.getElementById('result-message');
+                        resultMessage.innerText = `Verification Status: ${data.Status || 'No Results'}`;
+                        resultMessage.innerText += `\nFirst Name: ${data.Verification?.Firstnames || 'No Results'}`;
+                        resultMessage.innerText += `\nLast Name: ${data.Verification?.Lastname || 'No Results'}`;
+                        resultMessage.innerText += `\nDate of Birth: ${data.Verification?.Dob || 'No Results'}`;
+                        resultMessage.innerText += `\nAge: ${data.Verification?.Age || 'No Results'}`;
+                        resultMessage.innerText += `\nGender: ${data.Verification?.Gender || 'No Results'}`;
+                        resultMessage.innerText += `\n=======================================`;
+                                                      
+                        if (data.Verification?.Firstnames?.includes(originalName) && data.Verification?.Lastname?.includes(originalSurname)) {
+                            showMessage("User Credentials Match VerifyID Results!", true);
+                            isIDVerified = true;
+                            resultMessage.innerText += `\nUser Credentials Match`;
+                        } else {
+                            showMessage("User Credentials DO NOT Match VerifyID Results!", false);
+                            resultMessage.innerText += `\nUser Credentials DO NOT Match VerifyID Results!`;
+                            updateButtons(false, true); // Activate Decline button
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        showMessage("Error verifying ID. Please try again later.", false);
+                    })
+                    .finally(() => {
+                        // Hide the spinner and loading message after request completes
+                        document.getElementById("loadingSpinner2").style.display = "none";
+                        document.getElementById("loadingMessage").style.display = "none";
+                        const mainContent = document.querySelector('.row');
+                        mainContent.classList.remove("blur");
+                    });
+            }, 3000); // 3-second delay
+        }
+
+        function checkAMLPEP(idNumber, personsName) {
+            updateButtons(false, false);
+            // Show the spinner and the loading message
+
+            const loadingMessage = document.getElementById("loadingMessage2");
+            document.getElementById("loadingSpinner2").style.display = "block";
+            document.getElementById("loadingMessage2").style.display = "block";
+            loadingMessage.innerText = "Checking if user belongs to sanctions lists...";  // Custom message for AML/PEP check
+            const mainContent = document.querySelector('.row');
+            mainContent.classList.add("blur");
+
+            const apiUrl = 'https://www.verifyid.co.za/webservice/check-aml-pep';
+            const apiKey = '$2y$10$CmeisRRJhRLemVJxVoSvLO6RMn/0.IdpUuyUd8';
+            const searchBy = 'id_number';
+
+            const formData = new FormData();
+            formData.append('api_key', apiKey);
+            formData.append('search_by', searchBy);
+            formData.append('id_number', idNumber);
+            formData.append('persons_name', personsName);
+
+            setTimeout(() => {
+                fetch(apiUrl, {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => {
+                        console.log("Response status:", response.status);  // Log the response status
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log("API Response Data:", data);
+                        const resultMessage = document.getElementById('result-message');
+                        if (data.Status === 'Not Found' || !data.PersonFound) {
+                            resultMessage.innerText = 'No match found for the provided information.';
+                            resultMessage.innerText += '\nThis individual is not on any sanctions lists.';
+                            resultMessage.innerText += `\n=======================================`;
+                            resultMessage.innerText += '\nUser is Safe to use the app!';
+                            showMessage("User is Safe to use the app!", true);                       
+                            updateButtons(true, false);
+                            isSanctionsChecked = true;
+                            checkApprovalCriteria();
+                        } else {
+                            resultMessage.innerText = 'This individual is found on one or more sanctions lists!';
+                            showMessage("User was found on one or more sactions lists!", false);
+                            updateButtons(false, true); // Activate Decline button
+
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        showMessage("Error checking sanctions lists. Please try again later.", false);
+                    })
+                    .finally(() => {
+                        // Hide the spinner and loading message after request completes
+                        document.getElementById("loadingSpinner2").style.display = "none";
+                        loadingMessage.style.display = "none";
+                        const mainContent = document.querySelector('.row');
+                        mainContent.classList.remove("blur");
+                    });
+            }, 3000); // 3-second delay
+        }
+    </script>
+</body>
+
+

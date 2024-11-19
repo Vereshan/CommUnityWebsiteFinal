@@ -1,0 +1,71 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = CommUnityWeb
+build_property.RootNamespace = CommUnityWeb
+build_property.ProjectDir = C:\Users\veron\Dropbox\Varsity Files\Semester 6\Open source Intermediate\CommunityWebSite\CommUnityWeb\CommUnityWeb\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\veron\Dropbox\Varsity Files\Semester 6\Open source Intermediate\CommunityWebSite\CommUnityWeb\CommUnityWeb
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/veron/Dropbox/Varsity Files/Semester 6/Open source Intermediate/CommunityWebSite/CommUnityWeb/CommUnityWeb/Views/Admin/ConsumerDashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ29uc3VtZXJEYXNoYm9hcmQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/veron/Dropbox/Varsity Files/Semester 6/Open source Intermediate/CommunityWebSite/CommUnityWeb/CommUnityWeb/Views/Admin/ReviewDashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUmV2aWV3RGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/veron/Dropbox/Varsity Files/Semester 6/Open source Intermediate/CommunityWebSite/CommUnityWeb/CommUnityWeb/Views/Admin/VerifyConsumer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVmVyaWZ5Q29uc3VtZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/veron/Dropbox/Varsity Files/Semester 6/Open source Intermediate/CommunityWebSite/CommUnityWeb/CommUnityWeb/Views/Admin/VerifyServiceProvider.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVmVyaWZ5U2VydmljZVByb3ZpZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/veron/Dropbox/Varsity Files/Semester 6/Open source Intermediate/CommunityWebSite/CommUnityWeb/CommUnityWeb/Views/Analytics/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5hbHl0aWNzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/veron/Dropbox/Varsity Files/Semester 6/Open source Intermediate/CommunityWebSite/CommUnityWeb/CommUnityWeb/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/veron/Dropbox/Varsity Files/Semester 6/Open source Intermediate/CommunityWebSite/CommUnityWeb/CommUnityWeb/Views/Home/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/veron/Dropbox/Varsity Files/Semester 6/Open source Intermediate/CommunityWebSite/CommUnityWeb/CommUnityWeb/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/veron/Dropbox/Varsity Files/Semester 6/Open source Intermediate/CommunityWebSite/CommUnityWeb/CommUnityWeb/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/veron/Dropbox/Varsity Files/Semester 6/Open source Intermediate/CommunityWebSite/CommUnityWeb/CommUnityWeb/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/veron/Dropbox/Varsity Files/Semester 6/Open source Intermediate/CommunityWebSite/CommUnityWeb/CommUnityWeb/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/veron/Dropbox/Varsity Files/Semester 6/Open source Intermediate/CommunityWebSite/CommUnityWeb/CommUnityWeb/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/veron/Dropbox/Varsity Files/Semester 6/Open source Intermediate/CommunityWebSite/CommUnityWeb/CommUnityWeb/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-x0k8jo61qz

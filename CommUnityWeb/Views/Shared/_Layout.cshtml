@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - CommUnityWeb</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CommUnityWeb.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+ 
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Tahoma, sans-serif;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            /* Background will be applied to the ::before pseudo-element */
+        }
+
+            /* Pseudo-element for the blurred background image */
+            body::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url("/Images/test4.jpg"); /* Path to your image */
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                filter: blur(5px); /* Apply blur to the background */
+                z-index: -1; /* Place it behind all other content */
+            }
+
+        header {
+            background-color: #FF6D00;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-family: Tahoma, sans-serif;
+        }
+
+        .profile-image {
+            max-width: 30px;
+            height: auto;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 30px;
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .navbar {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar-nav .nav-link {
+            transition: color 0.3s ease;
+            font-family: Tahoma, sans-serif;
+        }
+
+            .navbar-nav .nav-link:hover {
+                color: #FF6D00;
+                background-color: rgba(255, 255, 255, 0.2);
+                border-radius: 5px;
+            }
+
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+            .navbar-brand:hover {
+                color: #fff;
+            }
+
+        .navbar-toggler {
+            border-color: #FF6D00;
+        }
+
+        .navbar-toggler-icon {
+            background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"%3E%3Cpath stroke="%23FF6D00" stroke-width="2" d="M5 6h20M5 14h20M5 22h20"/%3E%3C/svg%3E');
+        }
+
+        .navbar-nav .nav-link.active {
+            color: #FF6D00;
+            font-weight: bold;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+
+    </style>
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <img src="/Images/CommUnity Logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+                CommUnityWeb
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+        
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewData["ActivePage"] == "Index" ? "active" : "text-dark")" asp-area="" asp-controller="Analytics" asp-action="Index">Analytics</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewData["ActivePage"] == "Service_Provider_Dashboard" ? "active" : "text-dark")" asp-area="" asp-controller="Admin" asp-action="ReviewDashboard">Service_Provider_Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewData["ActivePage"] == "Consumer_Dashboard" ? "active" : "text-dark")" asp-area="" asp-controller="Admin" asp-action="ConsumerDashboard">Consumer_Dashboard</a>
+                        </li>
+                    }
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link @(ViewData["ActivePage"] == "login" ? "active" : "text-dark")" asp-area="" asp-controller="Home" asp-action="login">
+                            Login <i class="fas fa-user"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Footer section removed -->
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

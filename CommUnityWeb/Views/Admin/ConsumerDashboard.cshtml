@@ -1,0 +1,206 @@
+﻿@model List<CommUnityWeb.Models.UserRequest>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Requests Dashboard</title>
+    <style>
+        body {
+            font-family: Tahoma, sans-serif; /* Ensures Tahoma is used throughout */
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden; /* Ensure body doesn’t add scroll bars */
+        }
+
+        header {
+            background-color: #FF6D00;
+            padding: 10px;
+            color: white;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            font-family: Tahoma; /* Make header text Tahoma */
+        }
+
+        .container {
+            display: flex;
+            height: calc(100vh - 50px); /* Adjust according to your header height */
+            overflow: hidden; /* Remove scrolling */
+        }
+
+        .main-content {
+            width: 100%; /* Increased width */
+            padding: 20px;
+            overflow-y: auto; /* Allow vertical scrolling in the main content if necessary */
+        }
+
+        h2 {
+            font-family: Tahoma; /* Make heading text Tahoma */
+            margin: 10px 0; /* Provide space around headings */
+        }
+
+        #user-table {
+            width: 100%; /* Keep it at 100% */
+            border-collapse: collapse;
+            font-family: Tahoma; /* Ensure table text is Tahoma */
+        }
+
+            #user-table th, #user-table td {
+                padding: 10px;
+                border-bottom: 1px solid #ddd;
+                font-family: Tahoma; /* Ensure table cell text is Tahoma */
+                font-size: 1.2em; /* Increase font size */
+            
+            }
+
+            #user-table th {
+                background-color: #FF6D00;
+                color: #fff;
+            }
+
+
+        #user-table tr {
+            background-color: #fff; /* Set background to white */
+        }
+
+        button {
+            padding: 5px 10px;
+            margin: 0 5px;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+        }
+
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+            font-family: Tahoma; /* Make label text Tahoma */
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            font-family: Tahoma; /* Ensure input text is Tahoma */
+        }
+
+        /* Loading Spinner Styles */
+        .loading {
+            display: none; /* Hide loading by default */
+            position: fixed; /* Position it to cover the entire screen */
+            top: 100px; /* Start below the header */
+            left: 0;
+            right: 0;
+            bottom: 0;
+            backdrop-filter: blur(5px); /* Keep the blur effect */
+            z-index: 9999; /* Ensure it's on top */
+            text-align: center;
+            padding-top: 20%; /* Center the content vertically */
+        }
+
+        .spinner {
+            border: 16px solid #f3f3f3; /* Light grey */
+            border-top: 16px solid #007bff; /* Spinner color */
+            border-radius: 50%;
+            width: 95px;
+            height: 95px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto; /* Center the spinner */
+        }
+
+        @@keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        button.verify {
+            background-color: #007bff;
+            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+        }
+
+        button.verify:hover {
+            transform: translateY(-3px); /* Move button up */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for a "floating" effect */
+            background-color: #66b3ff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>PENDING Consumers:</h1>
+    </header>
+    <div class="container">
+        <div class="main-content">
+            <h2>User Requests:</h2>
+            <table id="user-table">
+                <thead>
+                    <tr>
+                        <th>ID Number</th>
+                        <th>Name</th>
+                        <th>Surname</th>
+                        <th>Date Of Birth</th>
+                        <th>Age</th>
+                        <th>Date Submitted</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var userRequest in Model)
+                        {
+                            <tr>
+                                <td>@userRequest.IdNumber</td>
+                                <td>@userRequest.Name</td>
+                                <td>@userRequest.Surname</td>
+                                <td>@userRequest.DateOfBirth.ToString("yyyy-MM-dd")</td>
+                                <td>@userRequest.Age</td>
+                                <td>@userRequest.DateSubmitted.ToString("yyyy-MM-dd")</td>
+                                <td>@userRequest.Status</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="verify" onclick="verifyUser('@userRequest.IdNumber')">Verify</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="10" style="text-align:center;">No Pending Consumers found.</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <script>
+        function verifyUser(IdNumber) {
+            // Show the loading spinner
+            document.getElementById("loading").style.display = "flex";
+            // Redirect after a short delay to show the spinner
+            setTimeout(() => {
+                window.location.href = `/Admin/VerifyConsumer?id=${IdNumber}`;
+            }, 55); // Adjust delay as needed
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+﻿@model List<CommUnityWeb.Models.AnalyticsViewModel>
+@{
+    ViewData["Title"] = "Analytics";
+}
+
+<h2 style="font-family: Tahoma; color: black; text-align: center; margin-top: 20px;">User Analysis:</h2>
+
+<div id="chartsContainer" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; overflow-y: auto; max-height: 80vh; font-family: Tahoma; padding: 20px; gap: 20px;">
+    @foreach (var data in Model.OrderBy(d => d.CollectionName == "ServiceProviders" ? 0 : 1))
+    {
+        <div class="chart" style="width: 400px; background-color: #f9f9f9; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <h3 style="font-family: Tahoma; color: #333; text-align: center; margin-bottom: 10px;">@data.CollectionName</h3>
+            <canvas id="chart-@data.CollectionName" style="max-height: 300px;"></canvas>
+            <p style="font-family: Tahoma; color: #333; text-align: center; margin-top: 10px; font-weight: bold; font-size: 16px;">Total Users: @(@data.AcceptedCount + @data.DeclinedCount + @data.PendingCount)</p>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        @foreach (var data in Model)
+        {
+            <text>
+                        var ctx = document.getElementById('chart-@data.CollectionName').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Approved', 'Declined', 'Pending'],
+                    datasets: [{
+                        data: [@data.AcceptedCount, @data.DeclinedCount, @data.PendingCount],
+                        backgroundColor: ['#28a745', '#dc3545', '#ffc107']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                font: {
+                                    family: 'Tahoma',
+                                    size: 14,
+                                    color: '#555'
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            </text>
+        }
+    </script>
+}
+
+<style>
+    /* Styling for smoother UI */
+    body {
+        background-color: #f0f2f5;
+        color: #333;
+        font-family: Tahoma, sans-serif;
+    }
+
+    #chartsContainer {
+        padding: 20px;
+    }
+
+    .chart {
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+        .chart:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+</style>
