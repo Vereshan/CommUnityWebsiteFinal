@@ -54,3 +54,4 @@ C:\Users\veron\Dropbox\Varsity Files\Semester 6\Open source Intermediate\Communi
 C:\Users\veron\Dropbox\Varsity Files\Semester 6\Open source Intermediate\CommunityWebSite\CommUnityWeb\CommUnityWeb\bin\Debug\net8.0\Credentials\community-8aa64-firebase-adminsdk-grkpl-1f1af68e7e.json
 C:\Users\veron\Dropbox\Varsity Files\Semester 6\Open source Intermediate\CommunityWebSite\CommUnityWeb\CommUnityWeb\bin\Debug\net8.0\FirebaseAdmin.dll
 C:\Users\veron\Dropbox\Varsity Files\Semester 6\Open source Intermediate\CommunityWebSite\CommUnityWeb\CommUnityWeb\bin\Debug\net8.0\Google.Api.Gax.Rest.dll
+C:\Users\veron\Dropbox\Varsity Files\Semester 6\Open source Intermediate\CommunityWebSite\CommUnityWeb\CommUnityWeb\obj\Debug\net8.0\CommUnityWeb.sourcelink.json
