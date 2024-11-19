@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "http://json.schemastore.org/launchsettings.json",
   "iisSettings": {
     "windowsAuthentication": false,
@@ -15,7 +15,8 @@
       "launchBrowser": true,
       "applicationUrl": "http://localhost:5008",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "FIRESTORE_COMMUNITY_CREDENTIALS": "C:\\Users\\veron\\Documents\\CommunityWebSiteFINAL\\CommunityWebSite\\CommUnityWeb\\CommUnityWeb\\bin\\Debug\\net8.0\\Credentials\\community-8aa64-firebase-adminsdk-grkpl-1f1af68e7e.json"
       }
     },
     "https": {
@@ -24,14 +25,16 @@
       "launchBrowser": true,
       "applicationUrl": "https://localhost:7253;http://localhost:5008",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "FIRESTORE_COMMUNITY_CREDENTIALS": "C:\\Users\\veron\\Documents\\CommunityWebSiteFINAL\\CommunityWebSite\\CommUnityWeb\\CommUnityWeb\\bin\\Debug\\net8.0\\Credentials\\community-8aa64-firebase-adminsdk-grkpl-1f1af68e7e.json"
       }
     },
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "FIRESTORE_COMMUNITY_CREDENTIALS": "C:\\Users\\veron\\Documents\\CommunityWebSiteFINAL\\CommunityWebSite\\CommUnityWeb\\CommUnityWeb\\bin\\Debug\\net8.0\\Credentials\\community-8aa64-firebase-adminsdk-grkpl-1f1af68e7e.json"
       }
     }
   }
