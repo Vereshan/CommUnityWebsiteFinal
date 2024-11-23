@@ -274,3 +274,6 @@ public class Firebase
 
 
 }
+//https://medium.com/@ritika.adequate/firebase-realtime-database-with-an-asp-net-mvc-application-b30a6a53e91f
+//https://www.youtube.com/watch?v=OuM-1qHyKmM
+//https://www.youtube.com/watch?v=nqIX4Oe25fk
